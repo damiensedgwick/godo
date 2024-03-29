@@ -36,10 +36,13 @@
 			<h1>Welcome {{ .User.Name }}</h1>
 			{{ end }}
 
-			<p>
-				Thank you for downloading and installing Napp. For any issues or
-				contributions, please feel free to raise them <a href="https://github.com/damiensedgwick/napp">here</a>
-			</p>
+      {{ if .Todos }}
+      <ul id="todos">
+        {{ range .Todos }}
+        <li>{{ .Title }}</li>
+        {{ end }}
+      </ul>
+      {{ end }}
 		</section>
 	</main>
 

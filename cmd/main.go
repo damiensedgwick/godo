@@ -32,8 +32,7 @@ func main() {
 		panic("failed to connect database")
 	}
 
-	db.AutoMigrate(&User{})
-	createInitialUser(db)
+	db.AutoMigrate(&User{}, &Todo{})
 
 	store := sessions.NewCookieStore([]byte(os.Getenv("GODO_COOKIE_STORE_SECRET")))
 
@@ -53,7 +52,12 @@ func main() {
 				fmt.Println("error unmarshalling user value")
 			}
 
-			t.Render(w, "index", newPageData(user))
+			todos, err := GetAll(user.ID, db)
+			if err != nil {
+				fmt.Println("error getting users todos")
+			}
+
+			t.Render(w, "index", newPageData(user, todos))
 			return
 		}
 
@@ -110,7 +114,9 @@ func main() {
 			fmt.Println("error saving session: ", err)
 		}
 
-		t.Render(w, "index", newPageData(user))
+		var todos []Todo
+
+		t.Render(w, "index", newPageData(user, todos))
 		return
 	})
 
@@ -194,12 +200,14 @@ func Logging(next http.Handler) http.Handler {
 }
 
 type PageData struct {
-	User User
+	User  User
+	Todos []Todo
 }
 
-func newPageData(user User) PageData {
+func newPageData(user User, todos []Todo) PageData {
 	return PageData{
-		User: user,
+		User:  user,
+		Todos: todos,
 	}
 }
 
@@ -210,19 +218,21 @@ type User struct {
 	Password  string
 	CreatedAt time.Time
 	UpdatedAt *time.Time
+	Todos     []Todo
 }
 
-func createInitialUser(db *gorm.DB) {
-	var user User
-	err := db.First(&user, "email = ?", "johnsnow@winterfell.com").Error
-	if err == gorm.ErrRecordNotFound {
-		db.Create(&User{
-			Model:     gorm.Model{},
-			Name:      "John Snow",
-			Email:     "johnsnow@winterfell.com",
-			Password:  "$2a$10$1oPDSctekA8P2IHDHoKNb.JjWJ4XFwzZAvYSHp0s4byhFeMp9.da.",
-			CreatedAt: time.Time{},
-			UpdatedAt: &time.Time{},
-		})
-	}
+type Todo struct {
+	gorm.Model
+	Title         string
+	Completed     bool
+	Description   *string
+	DueDate       *time.Time
+	CompletedDate *time.Time
+	UserId        uint
+}
+
+func GetAll(userId uint, db *gorm.DB) ([]Todo, error) {
+	var todos []Todo
+	err := db.Model(&Todo{}).Find(&todos).Where("id = ?", userId).Error
+	return todos, err
 }
