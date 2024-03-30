@@ -2,57 +2,60 @@
 <!DOCTYPE html>
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Godo | Stay organised &amp; productive with Godo</title>
-	<meta name="description" content="Discover the ultimate minimalists task management app with Godo. Stay organised, boost productivity, and manage your tasks effortlessly with Godo's intuitive features.">
-	<link href="static/styles.css" rel="stylesheet">
-	<script src="static/htmx.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Godo | Stay organised &amp; productive with Godo</title>
+  <meta name="description" content="Discover the ultimate minimalists task management app with Godo. Stay organised, boost productivity, and manage your tasks effortlessly with Godo's intuitive features.">
+  <link href="static/styles.css" rel="stylesheet">
+  <script src="static/htmx.min.js"></script>
 </head>
 
 <body>
-	<header>
-		<nav>
-			<a href="https://github.com/damiensedgwick/napp">Godo</a>
-			<ul>
-				{{ if not .User }}
-				{{ template "sign-in" . }}
-				{{ end }}
+  <header>
+    <nav>
+      <a href="https://github.com/damiensedgwick/napp">Godo</a>
+    <ul>
+        {{ if not .User }}
+        {{ template "sign-in" . }}
+        {{ end }}
 
-				{{ if .User }}
-				{{ template "sign-out" . }}
-				{{ end }}
-			</ul>
-		</nav>
-	</header>
+        {{ if .User }}
+        {{ template "sign-out" . }}
+        {{ end }}
+      </ul>
+    </nav>
+  </header>
 
-	<main>
-		<section id="content">
+  <main>
+    <section id="content">
       {{ if .Todos }}
       <ul id="todos">
         {{ range .Todos }}
         <li>{{ .Title }}</li>
         {{ end }}
       </ul>
+      <p class="inspo">
+        <i>If your mind isn’t clouded by unnecessary things, then this is the best season of your life - Wu-Men, 864.</i>
+      </p>
       {{ end }}
-		</section>
-	</main>
+    </section>
+  </main>
 
-	<script type="text/javascript">
-		document.addEventListener("DOMContentLoaded", (event) => {
-			document.body.addEventListener('htmx:beforeSwap', function (evt) {
-				if (evt.detail.xhr.status === 422) {
-					// allow 422 responses to swap as we are using this as a signal that
-					// a form was submitted with bad data and want to rerender with the
-					// errors
-					//
-					// set isError to false to avoid error logging in console
-					evt.detail.shouldSwap = true;
-					evt.detail.isError = false;
-				}
-			});
-		});
-	</script>
+  <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", (event) => {
+    document.body.addEventListener('htmx:beforeSwap', function (evt) {
+      if (evt.detail.xhr.status === 422) {
+        // allow 422 responses to swap as we are using this as a signal that
+        // a form was submitted with bad data and want to rerender with the
+        // errors
+        //
+        // set isError to false to avoid error logging in console
+        evt.detail.shouldSwap = true;
+        evt.detail.isError = false;
+      }
+    });
+  });
+  </script>
 </body>
 
 </html>
@@ -81,7 +84,7 @@
   </div>
   <div>
     <label for="password">
-     <span>Password:</span> 
+      <span>Password:</span> 
       <input type="password" name="password" value="" />
     </label>
   </div>
