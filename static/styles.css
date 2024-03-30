@@ -81,7 +81,7 @@ section>p {
   font-weight: 1em;
 }
 
-form {
+#auth-form {
   padding: 1.5em;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   display: flex;
@@ -101,18 +101,18 @@ input {
   width: 100%;
 }
 
-form>p {
+#auth-form>p {
   text-align: center;
   font-weight: bold;
   margin-bottom: 0.25em;
 }
 
-form>div {
+#auth-form>div {
   margin: 1em auto;
   width: 100%;
 }
 
-form>button {
+#auth-form>button {
   margin: 1em 5em;
   padding: 0.5em 1.5em;
   border: none;
@@ -122,14 +122,16 @@ form>button {
   cursor: pointer;
 }
 
+#todo-form {
+  display: flex;
+  align-items: center;
+}
+
 #todos {
   height: 100%;
   max-height: 500px;
   width: 100%;
   max-width: 768px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   padding: 1.5em;
   margin-top: 1rem;
   border-radius: 20px;
@@ -137,6 +139,12 @@ form>button {
   backdrop-filter: blur(40px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: white;
+}
+
+#todos > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .inspo {

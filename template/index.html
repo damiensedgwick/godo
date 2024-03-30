@@ -29,11 +29,13 @@
   <main>
     <section id="content">
       {{ if .Todos }}
-      <ul id="todos">
-        {{ range .Todos }}
-        <li>{{ .Title }}</li>
-        {{ end }}
-      </ul>
+      <div id="todos">
+        <ul>
+          {{ range .Todos }}
+          <li>{{ .Title }}</li>
+          {{ end }}
+        </ul>
+      </div>
       <p class="inspo">
         <i>If your mind isn’t clouded by unnecessary things, then this is the best season of your life - Wu-Men, 864.</i>
       </p>
