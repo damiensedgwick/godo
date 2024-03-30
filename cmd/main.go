@@ -114,7 +114,10 @@ func main() {
 			fmt.Println("error saving session: ", err)
 		}
 
-		var todos []Todo
+		todos, err := GetAll(user.ID, db)
+		if err != nil {
+			fmt.Println("error getting users todos")
+		}
 
 		t.Render(w, "index", newPageData(user, todos))
 		return
