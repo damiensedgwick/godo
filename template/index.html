@@ -28,14 +28,6 @@
 
 	<main>
 		<section id="content">
-			{{ if not .User }}
-			<h1>Welcome to Napp!</h1>
-			{{ end }}
-
-			{{ if .User }}
-			<h1>Welcome {{ .User.Name }}</h1>
-			{{ end }}
-
       {{ if .Todos }}
       <ul id="todos">
         {{ range .Todos }}
@@ -68,35 +60,31 @@
 
 {{ block "sign-in" . }}
 <li>
-	<button type="button" hx-get="/auth/sign-in" hx-target="#content">Sign In</button>
+  <button type="button" hx-get="/auth/sign-in" hx-target="#content">Sign In</button>
 </li>
 {{ end }}
 
 {{ block "sign-out" . }}
 <li>
-	<button type="button" hx-post="/auth/sign-out" hx-target="body">Sign Out</button>
+  <button type="button" hx-post="/auth/sign-out" hx-target="body">Sign Out</button>
 </li>
 {{ end }}
 
 {{ block "auth-form" . }}
 <form id="auth-form" hx-post="/auth/sign-in" hx-target="body">
-	<p>Sign in to Napp</p>
-	<small>
-		An example user has been created in the database for you, you can login
-		using: <b>johnsnow@winterfell.com</b> and <b>ghost</b>
-	</small>
-	<div>
-		Email:
-		<label for="email">
-			<input type="text" name="email" value="" />
-		</label>
-	</div>
-	<div>
-		Password:
-		<label for="password">
-			<input type="password" name="password" value="" />
-		</label>
-	</div>
-	<button type="submit">Sign In</button>
+  <p>Sign In</p>
+  <div>
+    <label for="email">
+      <span>Email:</span>
+      <input type="text" name="email" value="" />
+    </label>
+  </div>
+  <div>
+    <label for="password">
+     <span>Password:</span> 
+      <input type="password" name="password" value="" />
+    </label>
+  </div>
+  <button type="submit">Sign In</button>
 </form>
 {{ end }}
