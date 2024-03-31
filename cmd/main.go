@@ -226,12 +226,11 @@ type User struct {
 
 type Todo struct {
 	gorm.Model
-	Title         string
-	Completed     bool
-	Description   *string
-	DueDate       *time.Time
-	CompletedDate *time.Time
-	UserId        uint
+	Title       string
+	Completed   bool
+	Description *string
+	DueDate     *time.Time
+	UserId      uint
 }
 
 func GetAll(userId uint, db *gorm.DB) ([]Todo, error) {

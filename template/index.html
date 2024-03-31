@@ -29,10 +29,13 @@
   <main>
     <section id="content">
       {{ if .Todos }}
-      <div id="todos">
-        <ul>
+      <div id="godos" class="godos">
+        <ul class="godos__list">
           {{ range .Todos }}
-          <li>{{ .Title }}</li>
+          <li class="godos__list-item">
+            <span>{{ .Title }}: {{ .Description }} - Due: {{ .DueDate.Format "Jan 02, 2006" }}</span>
+            <input type="checkbox">
+          </li>
           {{ end }}
         </ul>
       </div>
