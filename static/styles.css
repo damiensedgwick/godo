@@ -168,6 +168,10 @@ section>p {
   justify-content: space-between;
 }
 
+.godos__list-item > div:first-of-type > span {
+  font-weight: 600;
+}
+
 .godos__list-item-actions {
   min-width: 80px;
 }
