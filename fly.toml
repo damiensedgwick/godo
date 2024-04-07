@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for godos on 2024-04-07T19:34:45+01:00
+# fly.toml app configuration file generated for godos on 2024-04-07T20:15:40+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -8,9 +8,10 @@ primary_region = 'lhr'
 
 [build]
 
-[mounts]
-  source="godo_data"
-  destination="/data"
+[[mounts]]
+  source = "godo_database"
+  destination = "/data"
+  initial_size = "1gb"
 
 [http_service]
   internal_port = 8080
