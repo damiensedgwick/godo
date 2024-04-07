@@ -1,204 +1,124 @@
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
 html,
 body {
-  width: 100dvw;
-  height: 100dvh;
-  font-family: courier;
-}
-
-body {
-  background-image: url("/static/background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-header {
-  padding: 1.5em 2em;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1024px;
-  margin: auto;
-}
-
-ul {
-  display: flex;
-  align-items: center;
-}
-
-li {
-  margin: 0 0.5em;
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  font-weight: bold;
-  color: tomato;
-  font-size: 1.25em;
-}
-
-button {
-  padding: 0.5em 1.5em;
-  border: none;
-  background: tomato;
-  color: white;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-input {
-  padding: 0.5em;
+  height: 100%;
+  width: 100%;
+  font-family: Verdana, Arial, Tahoma, sans-serif;
+  font-size: 1rem;
 }
 
 main {
-  height: 80%;
+  height: 100%;
+  width: 100%;
 }
 
-section {
-  width: 100%;
+.btn {
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background: var(--tw-green-500);
+  color: var(--tw-slate-100);
+  font-weight: bold;
+}
+
+.hero {
+  padding: 1.5rem;
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1em;
+  color: var(--tw-slate-100);
+  background: linear-gradient(
+    to right,
+    var(--tw-indigo-900),
+    var(--tw-indigo-800),
+    var(--tw-indigo-900)
+  );
 }
 
-section>h1 {
-  margin-bottom: 0.5em;
+.hero__title {
+  padding-bottom: 2rem;
+  font-size: 2.5rem;
 }
 
-section>p {
-  text-align: center;
-  font-weight: bold;
-  max-width: 65ch;
-  font-weight: 1em;
+.hero__intro {
+  padding-bottom: 2rem;
+  font-size: 1.2rem;
 }
 
-
-#auth-form {
-  padding: 1.5em;
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+.waitlist-form {
   display: flex;
   flex-direction: column;
-  width: 25em;
-  margin-top: 1rem;
-  border-radius: 20px;
-  border: 2px solid white;
-  backdrop-filter: blur(40px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  color: white;
+  min-width: 22rem;
 }
 
-
-#auth-form p {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 0.25em;
+.waitlist-form__group {
+  padding-top: 1rem;
 }
 
-#auth-form div {
-  margin: 1em auto;
+.waitlist-form__label {
+}
+
+.waitlist-form__input {
+  padding: 0.5rem;
   width: 100%;
-}
-
-#auth-form li {
-  width: 100%;
-}
-
-#auth-form>button {
-  margin: 1em 5em;
-  padding: 0.5em 1.5em;
+  margin-bottom: 1rem;
   border: none;
-  background: tomato;
-  color: white;
-  text-transform: uppercase;
-  cursor: pointer;
+  border-radius: 0.25rem;
 }
 
-#todo-form {
-  display: flex;
-  align-items: center;
+.waitlist-form__message {
+  height: 2.25rem;
+  padding-top: 1rem;
+  padding-bottom: 0;
+  text-align: center;
+  font-size: 1rem;
 }
 
-.godos {
-  height: 100%;
-  max-height: 500px;
+.waitlist-form__message-error {
+  color: var(--tw-red-500);
+}
+
+.waitlist-form__btn {
   width: 100%;
-  max-width: 768px;
-  padding: 1.5em;
-  margin-top: 1rem;
-  border-radius: 20px;
-  border: 2px solid white;
-  backdrop-filter: blur(40px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  color: white;
-}
-
-.godos__list {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.godos__list-item {
-  padding: 0.5em 1em;
-  background-color: #fff;
-  color: #000;
-  border-radius: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin: 0.5em auto;
-}
-
-.godos__list-item > div:first-of-type {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.godos__list-item > div:first-of-type > span {
-  font-weight: 600;
-}
-
-.godos__list-item-actions {
-  min-width: 80px;
-}
-
-.godos__list-item button {
-  padding: 0;
-  background: #fff;
-  color: #000;
-}
-
-.godos__list-item svg {
-  height: 20px;
-  width: 20px;
-}
-
-.inspo {
-  margin-top: 1em;
-  color: white;
-  letter-spacing: 1.5px;
-  font-size: 1.1em;
 }
 
 @media screen and (min-width: 768px) {
-  .godos__list-item > div:first-of-type {
+  .hero__title {
+    font-size: 4.5rem;
+  }
+
+  .hero__intro {
+    font-size: 1.5rem;
+    text-align: center;
     width: 100%;
+    max-width: 65ch;
+  }
+
+  .waitlist-form {
+    min-width: 32rem;
+  }
+
+  .waitlist-form__group {
+    flex-direction: row;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+  }
+
+  .waitlist-form__label {
+    min-width: 24rem;
+  }
+
+  .waitlist-form__input {
+    margin-bottom: 0;
+    width: 95%;
   }
 }
