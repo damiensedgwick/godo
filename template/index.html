@@ -16,19 +16,13 @@
   <main>
     <div class="hero">
       <h1 class="hero__title">Godos</h1>
-      <p class="hero__intro">
-        Join our waiting list and you'll be the first to know when we launch, ensuring you don't miss out on any exciting updates.
+      <p class="hero__content">
+        Godos is a minimalist todo list application crafted in Golang, it leverages HTMX for enhanced interactivity and SQLite for seamless data persistence.
       </p>
-      {{ template "waitlist" .LeadForm }}
-    </div>
-    <div class="about">
-      <h2 class="about__title">About Godos</h2>
-      <p class="about__content">
-        Godos is a minimalist todo list application crafted in Golang. It leverages HTMX for enhanced interactivity and SQLite for seamless data persistence. 
-      </p>
-      <p class="about__content">
+      <p class="hero__content">
         Developed with the Echo web framework, Godos employs standard HTML to dynamically render data-driven markup, ensuring a minimalist and visually appealing aesthetic.
       </p>
+      {{ template "waitlist" .LeadForm }}
     </div>
   </main>
 
