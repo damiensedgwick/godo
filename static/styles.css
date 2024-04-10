@@ -39,19 +39,23 @@ main {
 }
 
 .hero__title {
-  padding-bottom: 2rem;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
 }
 
-.hero__intro {
-  padding-bottom: 2rem;
-  font-size: 1.2rem;
+.hero__content {
+  padding: 2rem 0;
+  font-size: 1.1rem;
 }
 
 .waitlist-form {
   display: flex;
   flex-direction: column;
   min-width: 15rem;
+}
+
+.waitlist-form__info {
+  text-align: center;
+  font-weight: bold;
 }
 
 .waitlist-form__group {

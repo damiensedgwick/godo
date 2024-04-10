@@ -17,10 +17,7 @@
     <div class="hero">
       <h1 class="hero__title">Godos</h1>
       <p class="hero__content">
-        Godos is a minimalist todo list application crafted in Golang, it leverages HTMX for enhanced interactivity and SQLite for seamless data persistence.
-      </p>
-      <p class="hero__content">
-        Developed with the Echo web framework, Godos employs standard HTML to dynamically render data-driven markup, ensuring a minimalist and visually appealing aesthetic.
+        A minimal todo list app built with Golang, utilizing HTMX for interactivity and SQLite for data storage. Developed on the Echo web framework, it employs Go's HTML templating for a clean, minimalist design
       </p>
       {{ template "waitlist" .LeadForm }}
     </div>
@@ -48,6 +45,9 @@
 
 {{ block "waitlist" . }}      
 <form class="waitlist-form" id="waitlist-form" hx-post="/join-waitlist" hx-swap="outerHTML">
+  <p class="waitlist-form__info">
+    Join our waitlist to be notified when we go live!
+  </p>
   <div class="waitlist-form__group">
     <label class="waitlist-form__label" for="email">
       <input 
@@ -62,7 +62,7 @@
       >
     </label>
 
-    <button class="btn waitlist-form__btn" type="submit">Join Waitlist</button>
+    <button class="btn waitlist-form__btn" type="submit">Join</button>
   </div>
 
   {{ if .Errors.email }}
