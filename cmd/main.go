@@ -178,6 +178,7 @@ func newUser() User {
 	return User{}
 }
 
+// TODO: Add a check here to make sure only you can access this area!
 func adminHandler() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		sess, _ := session.Get("session", c)
