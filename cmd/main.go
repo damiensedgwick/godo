@@ -58,6 +58,8 @@ func main() {
 	e.GET("/", homepageHandler())
 	e.POST("/join-waitlist", joinWaitlistHandler(db))
 
+	e.GET("/dashboard", dashboardHandler())
+
 	e.Logger.Fatal(e.Start(":8080"))
 }
 
@@ -174,4 +176,22 @@ type User struct {
 
 func newUser() User {
 	return User{}
+}
+
+func dashboardHandler() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		sess, _ := session.Get("session", c)
+		if sess.Values["user"] != nil {
+			var user User
+			err := json.Unmarshal(sess.Values["user"].([]byte), &user)
+			if err != nil {
+				fmt.Println("error unmarshalling user value")
+				return err
+			}
+
+			return c.Render(200, "dashboard", newPageData(user, newLeadFormData()))
+		}
+
+		return c.Render(200, "dashboard", newPageData(newUser(), newLeadFormData()))
+	}
 }

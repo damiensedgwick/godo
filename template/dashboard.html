@@ -1,6 +1,6 @@
-{{ block "index" . }}
+{{ block "dashboard" . }}
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,16 +16,7 @@
 
   <body>
     <main>
-      <div class="hero">
-        <h1 class="hero__title">Godos</h1>
-        <p class="hero__content">
-          A minimal todo list app built with Golang, utilizing HTMX for
-          interactivity and SQLite for data storage. Developed on the Echo web
-          framework, it employs Go's HTML templating for a clean, minimalist
-          design
-        </p>
-        {{ template "waitlist" .LeadForm }}
-      </div>
+      <h1>Dashboard Area...</h1>
     </main>
 
     <script type="text/javascript">
@@ -46,39 +37,4 @@
     </script>
   </body>
 </html>
-{{ end }} {{ block "waitlist" . }}
-<form
-  class="waitlist-form"
-  id="waitlist-form"
-  hx-post="/join-waitlist"
-  hx-swap="outerHTML"
->
-  <p class="waitlist-form__info">
-    Join our waitlist to be notified when we go live!
-  </p>
-  <div class="waitlist-form__group">
-    <label class="waitlist-form__label" for="email">
-      <input
-        class="waitlist-form__input"
-        type="text"
-        name="email"
-        placeholder="Please enter your email"
-        {{
-        if
-        .Values.email}}
-        value="{{ .Values.email }}"
-        {{end}}
-        required
-      />
-    </label>
-
-    <button class="btn waitlist-form__btn" type="submit">Join</button>
-  </div>
-
-  {{ if .Errors.email }}
-  <p class="waitlist-form__message waitlist-form__message-error">
-    {{ .Errors.email }}
-  </p>
-  {{ end }}
-</form>
 {{ end }}
